@@ -3,6 +3,8 @@ let amountEl_one = document.querySelector("#amount-one");
 let currencyEl_two = document.querySelector("#currency-two");
 let amountEl_two = document.querySelector("#amount-two");
 
+let swap_btn = document.querySelector("#swap");
+
 const calculate = async () => {
   let currency_one = currencyEl_one.value;
   let currency_two = currencyEl_two.value;
@@ -27,3 +29,13 @@ calculate();
 currencyEl_one.addEventListener("change", calculate);
 currencyEl_two.addEventListener("change", calculate);
 amountEl_one.addEventListener("input", calculate);
+
+const swap = () => {
+  let currency_one = currencyEl_one.value;
+  let currency_two = currencyEl_two.value;
+  currencyEl_one.value = currency_two;
+  currencyEl_two.value = currency_one;
+  calculate();
+};
+
+swap_btn.addEventListener("click", swap);
